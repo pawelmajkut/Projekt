@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -32,6 +32,50 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Rezerwacje" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="0,2,0,0">
+            <Button Grid.Row="2" Name="btnKlienci" Height="60" Width="250" HorizontalAlignment="Left" Click="btnKlienci_Click">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Klienci" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Margin="0,2,0,0">
+            <Button Grid.Row="3" Name="btnProdukty" Height="60" Width="250" HorizontalAlignment="Left" Click="btnProdukty_Click">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Produkty" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Margin="0,2,0,0">
+            <Button Grid.Row="4" Name="btnPracownicy" Height="60" Width="250" HorizontalAlignment="Left" Click="btnPracownnicy_Click">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Pracownicy" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Margin="0,2,0,0">
+            <Button Grid.Row="5" Name="btnKoszyk" Height="60" Width="250" HorizontalAlignment="Left" Click="btnKoszyk_Click">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Koszyk" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
         </StackPanel>
