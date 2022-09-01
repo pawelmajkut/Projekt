@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Projekt.Views.RezerwacjeList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projekt.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                
+            </Grid.ColumnDefinitions>
+            <Button Margin="40,5,40,5" Name="btnDodaj" Content="Dodaj" FontSize="18" FontWeight="Bold" />
+            <Button Margin="40,5,40,5" Name="btnZmień" Content="Zmień" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
+            <Button Margin="40,5,40,5" Name="btnUsuń" Content="Usuń" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
+        </Grid>
+        <DataGrid x:Name="gridRezerwacje" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id_rezerwacje" Width="auto" Binding="{Binding IdRezerwacje}" />
+                <DataGridTextColumn Header="KlientID" Width="auto" Binding="{Binding KlientId}"/>
+                <DataGridTextColumn Header="ProduktID" Width="auto" Binding="{Binding ProduktId}"/>
+                <DataGridTextColumn Header="StatusID" Width="auto" Binding="{Binding StatusId}"/>
+                <DataGridTextColumn Header="Data_konca_rezerwacji" Width="auto" Binding="{Binding DataKoncaRezerwacji}" Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,4 +1,5 @@
 ﻿using Projekt.DB;
+using Projekt.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace Projekt
         private void btnRezerwacje_Click(object sender, RoutedEventArgs e)
         {
             lblWindowName.Content = "Rezerwacje";
+            DataContext = new RezerwacjeViewModel();
             
         }
 
