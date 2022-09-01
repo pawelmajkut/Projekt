@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekt.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace Projekt
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext())
+            {
+
+            }
+
         }
 
         private void btnRezerwacje_Click(object sender, RoutedEventArgs e)
