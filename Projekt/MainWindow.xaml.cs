@@ -24,5 +24,40 @@ namespace Projekt
         {
             InitializeComponent();
         }
+
+        private void btnRezerwacje_Click(object sender, RoutedEventArgs e)
+        {
+            lblWindowName.Content = "Rezerwacje";
+            
+        }
+
+        private void btnKlienci_Click(object sender, RoutedEventArgs e)
+        {
+            lblWindowName.Content = "Klienci";
+           
+        }
+
+        private void btnProdukty_Click(object sender, RoutedEventArgs e)
+        {
+            lblWindowName.Content = "Produkty";
+            
+        }
+
+        private void btnKoszyki_Click(object sender, RoutedEventArgs e)
+        {
+            lblWindowName.Content = "Rezerwacje";
+
+        }
+
+        private void btnPracownicy_Click(object sender, RoutedEventArgs e)
+        {
+            lblWindowName.Content = "Pracownicy";
+
+        }
+
+        private void btnZakończ_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
