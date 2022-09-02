@@ -45,15 +45,24 @@ namespace Projekt.Views
                 KlientId = (int)x.KlientId,
                 ProduktId = (int)x.ProduktId,
                 StatusId = (int)x.StatusId,
-                DataKoncaRezerwacji = (DateTime)x.DataKoncaRezerwacji,
-                Imię=x.Klient.Imię,
-                Nazwisko=x.Klient.Nazwisko,
-                Nazwa=x.Produkt.Nazwa,
-                Status=x.Status.Nazwa,
+                DataKoncaRezerwacji = x.DataKoncaRezerwacji,
+                Imię= x.Klient.Imię,
+                Nazwisko= x.Klient.Nazwisko,
+                Nazwa= x.Produkt.Nazwa,
+                Status= x.Status.Nazwa,
 
             }).ToList();
 
             gridRezerwacje.ItemsSource = list;
         }
+
+        private void btnDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            RezerwacjePage page = new RezerwacjePage();
+            page.ShowDialog();
+            //FillDatagrid();
+        }
+
+        
     }
 }

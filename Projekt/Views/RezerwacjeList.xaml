@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
                 
             </Grid.ColumnDefinitions>
-            <Button Margin="40,5,40,5" Name="btnDodaj" Content="Dodaj" FontSize="18" FontWeight="Bold" />
+            <Button Margin="40,5,40,5" Name="btnDodaj" Content="Dodaj" FontSize="18" FontWeight="Bold" Click="btnDodaj_Click"  />
             <Button Margin="40,5,40,5" Name="btnZmień" Content="Zmień" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
             <Button Margin="40,5,40,5" Name="btnUsuń" Content="Usuń" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
         </Grid>
