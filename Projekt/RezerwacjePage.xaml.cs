@@ -31,6 +31,7 @@ namespace Projekt
         List<Produkty> produkties = new List<Produkty>();
         List<Statusy> statusies = new List<Statusy>();
         List<Klienci> kliencis = new List<Klienci>();
+        public RezerwacjeDetailModel model;
 
 
 
@@ -44,6 +45,36 @@ namespace Projekt
 
         private void btnZapisz_Click(object sender, RoutedEventArgs e)
         {
+            if (cmbImięNazwisko.SelectedIndex == -1 || cmbProdukt.SelectedIndex == -1 || cmbStatus.SelectedIndex == -1)
+            {
+                MessageBox.Show("Wprowadzono niepoprawne dane!");
+            }
+            if (picker1.SelectedDate <= DateTime.Today || picker1.SelectedDate == null)
+            {
+                MessageBox.Show("Wprowadzono niepoprawna datę!");
+            }
+            else 
+            {
+                RezerwacjeProduktów rezerwacje = new RezerwacjeProduktów();
+                rezerwacje.KlientId = Convert.ToInt32(cmbImięNazwisko.SelectedValue);
+                rezerwacje.ProduktId = Convert.ToInt32(cmbProdukt.SelectedValue);
+                rezerwacje.StatusId = Convert.ToInt32(cmbStatus.SelectedValue);
+                rezerwacje.DataKoncaRezerwacji =(DateTime)picker1.SelectedDate;
+
+
+                db.RezerwacjeProduktóws.Add(rezerwacje);
+                db.SaveChanges();
+                MessageBox.Show("Rezerwacja dodana!");
+
+                cmbImięNazwisko.SelectedIndex = -1;
+                cmbProdukt.SelectedIndex = -1;
+                cmbStatus.SelectedIndex = -1;
+                picker1.SelectedDate = null;
+
+            }
+
+
+
 
         }
 
@@ -64,7 +95,7 @@ namespace Projekt
 
             cmbImięNazwisko.ItemsSource = list;
             cmbImięNazwisko.DisplayMemberPath = "ImięNazwisko";
-            cmbImięNazwisko.SelectedValuePath = "IdKlienci";
+            cmbImięNazwisko.SelectedValuePath = "ID_klienci";
             cmbImięNazwisko.SelectedIndex = -1;
 
             var produkty = db.Produkties.Select(a => new
@@ -75,20 +106,22 @@ namespace Projekt
 
             cmbProdukt.ItemsSource = produkty;
             cmbProdukt.DisplayMemberPath = "Nazwa";
-            cmbProdukt.SelectedValuePath = "ID_Produkty";
+            cmbProdukt.SelectedValuePath = "ID_produkty";
             cmbProdukt.SelectedIndex = -1;
 
             var statusy = db.Statusies.Select(a => new {
-                ID_statusy=a.IdStatusy,
+                IdStatusy = a.IdStatusy,
                 Nazwa=a.Nazwa,
             }).OrderBy(a => a.Nazwa).ToList();
 
             cmbStatus.ItemsSource = statusy;
             cmbStatus.DisplayMemberPath = "Nazwa";
-            cmbStatus.SelectedValuePath = "ID_statusy";
+            cmbStatus.SelectedValuePath = "IdStatusy";
             cmbStatus.SelectedIndex = -1;
 
 
         }
+
+        
     }
 }
