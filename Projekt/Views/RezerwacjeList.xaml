@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekt.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" FontSize="18" FontWeight="Bold">
     <Grid>
         <Grid.RowDefinitions>
             
@@ -24,13 +24,17 @@
             <Button Margin="40,5,40,5" Name="btnZmień" Content="Zmień" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
             <Button Margin="40,5,40,5" Name="btnUsuń" Content="Usuń" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
         </Grid>
-        <DataGrid x:Name="gridRezerwacje" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow">
+        <DataGrid x:Name="gridRezerwacje" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="10,2,10,10" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id_rezerwacje" Width="auto" Binding="{Binding IdRezerwacje}" />
-                <DataGridTextColumn Header="KlientID" Width="auto" Binding="{Binding KlientId}"/>
-                <DataGridTextColumn Header="ProduktID" Width="auto" Binding="{Binding ProduktId}"/>
-                <DataGridTextColumn Header="StatusID" Width="auto" Binding="{Binding StatusId}"/>
-                <DataGridTextColumn Header="Data_konca_rezerwacji" Width="auto" Binding="{Binding DataKoncaRezerwacji}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding IdRezerwacje}" />
+                <DataGridTextColumn Header="Imię" Width="auto" Binding="{Binding Imię}"/>
+                <DataGridTextColumn Header="Nazwisko" Width="auto" Binding="{Binding Nazwisko}"/>
+                <DataGridTextColumn Header="KlientID" Width="auto" Binding="{Binding KlientId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Nazwa Produktu" Width="auto" Binding="{Binding Nazwa}"/>
+                <DataGridTextColumn Header="ProduktID" Width="auto" Binding="{Binding ProduktId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="StatusID" Width="auto" Binding="{Binding StatusId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Status" Width="auto" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Data__końca__rezerwacji" Width="auto" Binding="{Binding DataKoncaRezerwacji}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

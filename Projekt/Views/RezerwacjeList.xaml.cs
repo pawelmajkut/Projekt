@@ -1,4 +1,6 @@
-﻿using Projekt.DB;
+﻿using Microsoft.EntityFrameworkCore;
+using Projekt.DB;
+using Projekt.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +26,34 @@ namespace Projekt.Views
         public RezerwacjeList()
         {
             InitializeComponent();
-            using (SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext())
-            {
-                List<RezerwacjeProduktów> list = db.RezerwacjeProduktóws.ToList(); ; //.OrderBy(x => x.KlientId).ToList();
-                gridRezerwacje.ItemsSource = list;
-            }
+            //using (SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext())
+            //{
+            //    List<RezerwacjeProduktów> list = db.RezerwacjeProduktóws.ToList(); ; //.OrderBy(x => x.KlientId).ToList();
+            //    gridRezerwacje.ItemsSource = list;
+            //}
+            FillDatagrid();
+        }
 
+        SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext();
+        List<RezerwacjeDetailModel> list = new List<RezerwacjeDetailModel>();
+
+        void FillDatagrid()
+        {
+            list = db.RezerwacjeProduktóws.Include(x => x.Klient).Include(x => x.Produkt).Include(x => x.Status).Select(x => new RezerwacjeDetailModel()
+            {
+                IdRezerwacje = x.IdRezerwacje,
+                KlientId = (int)x.KlientId,
+                ProduktId = (int)x.ProduktId,
+                StatusId = (int)x.StatusId,
+                DataKoncaRezerwacji = (DateTime)x.DataKoncaRezerwacji,
+                Imię=x.Klient.Imię,
+                Nazwisko=x.Klient.Nazwisko,
+                Nazwa=x.Produkt.Nazwa,
+                Status=x.Status.Nazwa,
+
+            }).ToList();
+
+            gridRezerwacje.ItemsSource = list;
         }
     }
 }
