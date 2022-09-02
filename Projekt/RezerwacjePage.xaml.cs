@@ -49,11 +49,46 @@ namespace Projekt
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext())
-            {
+            //var list = db.Kliencis.ToList().OrderBy(x => x.Imię);
+            //cmbImięNazwisko.ItemsSource = list;
+            //cmbImięNazwisko.DisplayMemberPath = "Nazwisko" ;
+            //cmbImięNazwisko.SelectedValuePath = "IdKlienci";
+            //cmbImięNazwisko.SelectedIndex = -1;
 
-            }
-            //InitializeComponent();
+            var list = db.Kliencis.Select(a => new {
+                ID_klienci = a.IdKlienci,
+                Imię=a.Imię,
+                ImięNazwisko=a.Imię + " " + a.Nazwisko,
+                Nazwisko=a.Nazwisko,
+            }).OrderBy(a=> a.Nazwisko).ToList();
+
+            cmbImięNazwisko.ItemsSource = list;
+            cmbImięNazwisko.DisplayMemberPath = "ImięNazwisko";
+            cmbImięNazwisko.SelectedValuePath = "IdKlienci";
+            cmbImięNazwisko.SelectedIndex = -1;
+
+            var produkty = db.Produkties.Select(a => new
+            {
+                ID_produkty=a.IdProdukty,
+                Nazwa=a.Nazwa,
+            }).OrderBy(a => a.ID_produkty).ToList();
+
+            cmbProdukt.ItemsSource = produkty;
+            cmbProdukt.DisplayMemberPath = "Nazwa";
+            cmbProdukt.SelectedValuePath = "ID_Produkty";
+            cmbProdukt.SelectedIndex = -1;
+
+            var statusy = db.Statusies.Select(a => new {
+                ID_statusy=a.IdStatusy,
+                Nazwa=a.Nazwa,
+            }).OrderBy(a => a.Nazwa).ToList();
+
+            cmbStatus.ItemsSource = statusy;
+            cmbStatus.DisplayMemberPath = "Nazwa";
+            cmbStatus.SelectedValuePath = "ID_statusy";
+            cmbStatus.SelectedIndex = -1;
+
+
         }
     }
 }
