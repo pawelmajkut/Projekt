@@ -28,10 +28,10 @@ namespace Projekt
         }
 
         SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext();
-        List<Produkty> produkties = new List<Produkty>();
-        List<Statusy> statusies = new List<Statusy>();
-        List<Klienci> kliencis = new List<Klienci>();
-        public RezerwacjeDetailModel model;
+        //List<Produkty> produkties = new List<Produkty>();
+        //List<Statusy> statusies = new List<Statusy>();
+        //List<Klienci> kliencis = new List<Klienci>();
+        //public RezerwacjeDetailModel model;
 
 
 
