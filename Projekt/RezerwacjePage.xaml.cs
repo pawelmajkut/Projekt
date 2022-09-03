@@ -133,7 +133,7 @@ namespace Projekt
             cmbStatus.SelectedValuePath = "IdStatusy";
             cmbStatus.SelectedIndex = -1;
 
-            if (model != null & model.IdRezerwacje != 0)
+            if (model != null && model.IdRezerwacje != 0)
             {
                 cmbImięNazwisko.SelectedValue = model.KlientId;
                 cmbProdukt.SelectedValue = model.ProduktId;
