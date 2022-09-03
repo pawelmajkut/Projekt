@@ -19,7 +19,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="gridKlienci" Grid.Row="1" Grid.ColumnSpan="5" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid x:Name="gridKlienci" Grid.Row="1" Grid.ColumnSpan="5" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Margin="10,0,10,0">
         <DataGrid.Columns>
             <DataGridTextColumn Header="ID_klienci" Width="*" Binding="{Binding IdKlienci}" Visibility="Hidden"/>
             <DataGridTextColumn Header="Imię" Width="*" Binding="{Binding Imię}"/>
@@ -35,26 +35,31 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
+                
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                
                 <ColumnDefinition Width="40*"/>
                 <ColumnDefinition Width="70*"/>
                 <ColumnDefinition Width="70*"/>
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Miasto"  Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox x:Name="txtMiasto" Grid.Column="1" TextWrapping="Wrap" Margin="0,0,0,0" Height="26"/>
-            <Label Content="Płeć"  Grid.Row="1" Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ComboBox Name="cmbPłeć" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30" Margin="0,0,0,0"/>
+            <Label Content="Miasto"  Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtMiasto" Grid.Column="1" TextWrapping="Wrap" Margin="0,0,0,0" Height="30"/>
+            <Label Content="Płeć"  Grid.Row="1" Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <ComboBox Name="cmbPłeć" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30" Margin="0,0,0,0" SelectionChanged="cmbPłeć_SelectionChanged">
+                <ComboBoxItem Content="Mężczyzna" Tag="1"></ComboBoxItem>
+                <ComboBoxItem Content="Kobieta" Tag="2"></ComboBoxItem>
+            </ComboBox>
             <!--<Label Content="BirthDay"  Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <DatePicker Name="datepicker1" Grid.Row="2" Grid.Column="1" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" SelectedDateFormat="Short"/>-->
-            <Label Content="Data urodzenia" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Slider Name="WybórRoku"  Width="150" Grid.Column="3" Maximum="2050" Margin="0,10,0,0"  Orientation="Horizontal" SmallChange="1" TickPlacement="None" IsSnapToTickEnabled="True"/>
-            <TextBox x:Name="txtWybórRoku" Text="{Binding ElementName=WybórRoku, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="3" Width="80"/>
-            <Button Grid.Column="4" Content="Search" Name="btnSearch" Margin="20,5,10,5" Click="btnSearch_Click"/>
-            <Button Grid.Column="4" Grid.Row="1" Content="Clear" Name="btnClear" Margin="20,5,10,5" Click="btnClear_Click"/>
+            <Label Content="Rok urodzenia" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Height="34"/>
+            <Slider Name="WybórRoku"  Width="150" Height="25" Grid.Column="3" Maximum="2050" Margin="0,10,0,10"  Orientation="Horizontal" SmallChange="1" TickPlacement="None" IsSnapToTickEnabled="True"/>
+            <TextBox x:Name="txtWybórRoku" Text="{Binding ElementName=WybórRoku, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="3" Width="80" Height="30"/>
+            <Label Content="Wybrany rok:" Grid.Column="2" Grid.Row="1" Height="34" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Button Grid.Column="4" Content="Search" Name="btnSearch" Height="35" Click="btnSearch_Click" Width="160"/>
+            <Button Grid.Column="4" Grid.Row="1" Content="Clear" Name="btnClear" Height="35" Click="btnClear_Click" Width="160"/>
         </Grid>
         <Button x:Name="btnDodaj" Content="Dodaj" FontSize="18" FontWeight="Bold" Grid.Column="1" Grid.Row="2" Margin="40,5,40,5" Click="btnDodaj_Click"/>
         <Button x:Name="btnZmień" Content="Zmień" FontSize="18" FontWeight="Bold" Grid.Column="2" Grid.Row="2" Margin="40,5,40,5" Click="btnZmień_Click"/>

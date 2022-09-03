@@ -65,5 +65,10 @@ namespace Projekt.Views
         {
 
         }
+
+        private void cmbPłeć_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
