@@ -33,17 +33,24 @@ namespace Projekt.Views
         //List<KlienciViewModel> list = new List<KlienciViewModel>();
         List<Klienci> list = new List<Klienci>();
 
+        List<KlienciDetailModel> list2 = new List<KlienciDetailModel>();
+
+        
+
+
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             FillDatagrid();
 
         }
 
-        void FillDatagrid()
+        private void FillDatagrid()
         {
-            List<Klienci> list = db.Kliencis.OrderBy(x => x.Nazwisko).ToList();
+           // List<Klienci> list = db.Kliencis.OrderBy(x => x.Nazwisko).ToList();
+            
 
-            gridKlienci.ItemsSource = list;
+          //  gridKlienci.ItemsSource = list;
         }
 
         private void WybórRoku_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -71,7 +78,17 @@ namespace Projekt.Views
         private void btnSzukaj_Click(object sender, RoutedEventArgs e)
         {
             string AdresZam = Convert.ToString(txtMiasto.Text);
-            List<Klienci> wyszukiwanie = list;
+
+
+            //List<Klienci> wyszukiwanie = list;
+
+
+            list2 = db.Kliencis.Select(x => new KlienciDetailModel() { }).ToList();
+
+            gridKlienci.ItemsSource = list2;
+
+            List<KlienciDetailModel> searchlist = list2;
+
             if (txtMiasto.Text.Trim() != "")
             {
                 //wyszukiwanie = wyszukiwanie.Where(x => x.AdresZam == Convert.ToString(txtMiasto.Text)).ToList();
@@ -81,7 +98,11 @@ namespace Projekt.Views
 
                 //list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
                 //wyszukiwanie = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+                searchlist=searchlist.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+
+
                 
+
             }
             if (cmbPłeć.SelectedIndex == 0)
             {
@@ -89,6 +110,7 @@ namespace Projekt.Views
 
                 //list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
                 //wyszukiwanie = db.Kliencis.Where(x => EF.Functions.Like(x.Imię, $"%[^a]")).ToList();
+                searchlist = searchlist.Where(x => EF.Functions.Like(x.Imię, $"%[^a]")).ToList();
 
             }
             if (cmbPłeć.SelectedIndex == 1)
@@ -97,9 +119,9 @@ namespace Projekt.Views
 
                 //list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
                 //wyszukiwanie = db.Kliencis.Where(x => EF.Functions.Like(x.Imię, $"%a")).ToList();
-
+                searchlist = searchlist.Where(x => EF.Functions.Like(x.Imię, $"%a")).ToList();
             }
-            gridKlienci.ItemsSource = list;
+            gridKlienci.ItemsSource = searchlist;
         }
 
         private void btnWyczyść_Click(object sender, RoutedEventArgs e)
