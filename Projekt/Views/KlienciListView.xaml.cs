@@ -73,12 +73,32 @@ namespace Projekt.Views
             string AdresZam = Convert.ToString(txtMiasto.Text);
             List<Klienci> wyszukiwanie = list;
             if (txtMiasto.Text.Trim() != "")
+            {
                 //wyszukiwanie = wyszukiwanie.Where(x => x.AdresZam == Convert.ToString(txtMiasto.Text)).ToList();
                 //string AdresZam = Convert.ToString(txtMiasto.Text);
                 //wyszukiwanie = wyszukiwanie.Where(x => x.AdresZam.EndsWith("Kraków")).ToList();
                 //wyszukiwanie = wyszukiwanie.Where(x => EF.Functions.Like(x.AdresZam, "%Kraków")).ToList();
-                list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
-            if ()
+
+                //list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+                //wyszukiwanie = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+                
+            }
+            if (cmbPłeć.SelectedIndex == 0)
+            {
+                MessageBox.Show("Wartość SelecetedValue to Mężczyzna");
+
+                //list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+                //wyszukiwanie = db.Kliencis.Where(x => EF.Functions.Like(x.Imię, $"%[^a]")).ToList();
+
+            }
+            if (cmbPłeć.SelectedIndex == 1)
+            {
+                MessageBox.Show("Wartość SelecetedValue to Kobieta");
+
+                //list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+                //wyszukiwanie = db.Kliencis.Where(x => EF.Functions.Like(x.Imię, $"%a")).ToList();
+
+            }
             gridKlienci.ItemsSource = list;
         }
 
