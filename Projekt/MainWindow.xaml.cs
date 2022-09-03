@@ -45,6 +45,7 @@ namespace Projekt
         private void btnKlienci_Click(object sender, RoutedEventArgs e)
         {
             lblWindowName.Content = "Klienci";
+            DataContext = new KlienciViewModel();
            
         }
 

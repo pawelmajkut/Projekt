@@ -101,5 +101,11 @@
 
             </views:RezerwacjeList>
         </DataTemplate>
+        <DataTemplate x:Name="KlienciTemplate" DataType="{x:Type viewmodels:KlienciViewModel}">
+            <views:KlienciListView>
+
+            </views:KlienciListView>
+        </DataTemplate>
+        
     </Window.Resources>
 </Window>
