@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Projekt.DB;
 using Projekt.ViewModels;
 using Projekt.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projekt.Views
 {
@@ -29,7 +30,21 @@ namespace Projekt.Views
         }
 
         SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext();
-        List<KlienciViewModel> list = new List<KlienciViewModel>();
+        //List<KlienciViewModel> list = new List<KlienciViewModel>();
+        List<Klienci> list = new List<Klienci>();
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            FillDatagrid();
+
+        }
+
+        void FillDatagrid()
+        {
+            List<Klienci> list = db.Kliencis.OrderBy(x => x.Nazwisko).ToList();
+
+            gridKlienci.ItemsSource = list;
+        }
 
         private void WybórRoku_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -51,17 +66,23 @@ namespace Projekt.Views
 
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
+        
 
+        private void btnSzukaj_Click(object sender, RoutedEventArgs e)
+        {
+            string AdresZam = Convert.ToString(txtMiasto.Text);
+            List<Klienci> wyszukiwanie = list;
+            if (txtMiasto.Text.Trim() != "")
+                //wyszukiwanie = wyszukiwanie.Where(x => x.AdresZam == Convert.ToString(txtMiasto.Text)).ToList();
+                //string AdresZam = Convert.ToString(txtMiasto.Text);
+                //wyszukiwanie = wyszukiwanie.Where(x => x.AdresZam.EndsWith("Kraków")).ToList();
+                //wyszukiwanie = wyszukiwanie.Where(x => EF.Functions.Like(x.AdresZam, "%Kraków")).ToList();
+                list = db.Kliencis.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}")).ToList();
+            if ()
+            gridKlienci.ItemsSource = list;
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void btnWyczyść_Click(object sender, RoutedEventArgs e)
         {
 
         }
