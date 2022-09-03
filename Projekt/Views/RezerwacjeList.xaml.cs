@@ -60,7 +60,7 @@ namespace Projekt.Views
         {
             RezerwacjePage page = new RezerwacjePage();
             page.ShowDialog();
-            //FillDatagrid();
+            FillDatagrid();
         }
 
         
