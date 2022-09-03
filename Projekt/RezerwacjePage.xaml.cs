@@ -31,9 +31,7 @@ namespace Projekt
         //List<Produkty> produkties = new List<Produkty>();
         //List<Statusy> statusies = new List<Statusy>();
         //List<Klienci> kliencis = new List<Klienci>();
-        //public RezerwacjeDetailModel model;
-
-
+        public RezerwacjeDetailModel model;
 
 
 
@@ -56,21 +54,36 @@ namespace Projekt
             }
             else 
             {
-                RezerwacjeProduktów rezerwacje = new RezerwacjeProduktów();
-                rezerwacje.KlientId = Convert.ToInt32(cmbImięNazwisko.SelectedValue);
-                rezerwacje.ProduktId = Convert.ToInt32(cmbProdukt.SelectedValue);
-                rezerwacje.StatusId = Convert.ToInt32(cmbStatus.SelectedValue);
-                rezerwacje.DataKoncaRezerwacji =(DateTime)picker1.SelectedDate;
+                if (model != null && model.IdRezerwacje != 0)
+                {
+                    RezerwacjeProduktów rezerwacje = db.RezerwacjeProduktóws.Find(model.IdRezerwacje);
+                    rezerwacje.KlientId = Convert.ToInt32(cmbImięNazwisko.SelectedValue);
+                    rezerwacje.ProduktId = Convert.ToInt32(cmbProdukt.SelectedValue);
+                    rezerwacje.StatusId = Convert.ToInt32(cmbStatus.SelectedValue);
+                    rezerwacje.DataKoncaRezerwacji = (DateTime)picker1.SelectedDate;
+
+                    db.SaveChanges();
+                    MessageBox.Show("Rezerwacja została zmieniona!");
+
+                }
+                else
+                {
+                    RezerwacjeProduktów rezerwacje = new RezerwacjeProduktów();
+                    rezerwacje.KlientId = Convert.ToInt32(cmbImięNazwisko.SelectedValue);
+                    rezerwacje.ProduktId = Convert.ToInt32(cmbProdukt.SelectedValue);
+                    rezerwacje.StatusId = Convert.ToInt32(cmbStatus.SelectedValue);
+                    rezerwacje.DataKoncaRezerwacji = (DateTime)picker1.SelectedDate;
 
 
-                db.RezerwacjeProduktóws.Add(rezerwacje);
-                db.SaveChanges();
-                MessageBox.Show("Rezerwacja dodana!");
+                    db.RezerwacjeProduktóws.Add(rezerwacje);
+                    db.SaveChanges();
+                    MessageBox.Show("Rezerwacja dodana!");
 
-                cmbImięNazwisko.SelectedIndex = -1;
-                cmbProdukt.SelectedIndex = -1;
-                cmbStatus.SelectedIndex = -1;
-                picker1.SelectedDate = null;
+                    cmbImięNazwisko.SelectedIndex = -1;
+                    cmbProdukt.SelectedIndex = -1;
+                    cmbStatus.SelectedIndex = -1;
+                    picker1.SelectedDate = null;
+                }
 
             }
 
@@ -119,6 +132,15 @@ namespace Projekt
             cmbStatus.DisplayMemberPath = "Nazwa";
             cmbStatus.SelectedValuePath = "IdStatusy";
             cmbStatus.SelectedIndex = -1;
+
+            if (model != null & model.IdRezerwacje != 0)
+            {
+                cmbImięNazwisko.SelectedValue = model.KlientId;
+                cmbProdukt.SelectedValue = model.ProduktId;
+                cmbStatus.SelectedValue = model.StatusId;
+                picker1.SelectedDate = model.DataKoncaRezerwacji;
+            }
+
 
 
         }

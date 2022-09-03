@@ -26,16 +26,17 @@ namespace Projekt.Views
         public RezerwacjeList()
         {
             InitializeComponent();
-            //using (SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext())
-            //{
-            //    List<RezerwacjeProduktów> list = db.RezerwacjeProduktóws.ToList(); ; //.OrderBy(x => x.KlientId).ToList();
-            //    gridRezerwacje.ItemsSource = list;
-            //}
-            FillDatagrid();
+                       
         }
 
         SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext();
         List<RezerwacjeDetailModel> list = new List<RezerwacjeDetailModel>();
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            FillDatagrid();
+
+        }
 
         void FillDatagrid()
         {
@@ -63,6 +64,23 @@ namespace Projekt.Views
             FillDatagrid();
         }
 
-        
+        private void btnZmień_Click(object sender, RoutedEventArgs e)
+        {
+            RezerwacjeDetailModel model = (RezerwacjeDetailModel)gridRezerwacje.SelectedItem;
+            RezerwacjePage page = new RezerwacjePage();
+            page.model = model;
+            page.ShowDialog();
+            FillDatagrid();
+        }
+
+        private void btnUsuń_Click(object sender, RoutedEventArgs e)
+        {
+            RezerwacjeDetailModel model = (RezerwacjeDetailModel)gridRezerwacje.SelectedItem;
+            RezerwacjeProduktów rez = db.RezerwacjeProduktóws.Find(model.IdRezerwacje);
+            db.RezerwacjeProduktóws.Remove(rez);
+            db.SaveChanges();
+            MessageBox.Show("Rezerwacja została usunięta!");
+            FillDatagrid();
+        }
     }
 }
