@@ -21,6 +21,8 @@ namespace Projekt.Views
     /// </summary>
     public partial class KlienciPage : Window
     {
+        public bool poprawność { get; set; }
+        
         public KlienciPage()
         {
             InitializeComponent();
@@ -38,92 +40,124 @@ namespace Projekt.Views
             this.Close();
         }
 
-
-
-        private void btnSprawdź_Click(object sender, RoutedEventArgs e)
+        public bool SprawdźFormularz()
         {
-            //Regex regexkodpocztowy = new Regex("^\\d{2}-\\d{3}$");
-            //bool walidacja = regexkodpocztowy.IsMatch(txtKod.Text);
-            //if (walidacja == true)
-            //{
-            //    MessageBox.Show("Kod pocztowy poprawny");
-            //}
-            //if (walidacja == false)
-            //{
-            //    MessageBox.Show("Kod pocztowy niepoprawny !!!");
-            //    txtKod.Clear();
-
-            //}
+            
             if (txtImię.Text.Trim() == "" || txtNazwisko.Text.Trim() == ""
                 || txtAdres.Text.Trim() == "" || txtKod.Text.Trim() == ""
                 || txtEmail.Text.Trim() == "" || txtTel.Text.Trim() == ""
-                ||  picker1.SelectedDate == null)
+                || picker1.SelectedDate == null)
             {
-                MessageBox.Show("Wypełnij wszystkie pola!!!");
+                MessageBox.Show("Wypełnij wszystkie pola formularza!");
+                return false;
+            }
+            else return true;
+            
+        }
+
+        public void btnSprawdź_Click(object sender, RoutedEventArgs e)
+        {
+            poprawność = SprawdźFormularz();
+
+            if (poprawność)
+            {
+                
+                poprawność = WalidacjaDataurodzenia((DateTime)picker1.SelectedDate, poprawność);
+                poprawność = WalidacjaKodpocztowy(txtKod.Text, poprawność);
+                poprawność = WalidacjaEmail(txtEmail.Text, poprawność);
+                poprawność = WalidacjaTelefon(txtTel.Text, poprawność);
+                               
+                
+                if (poprawność) MessageBox.Show("Formularz wypełniony poprawnie!");
+                else MessageBox.Show("Popraw dane w formularzu!");
 
             }
+            
+
+        }
+                
+        public bool WalidacjaDataurodzenia(DateTime urodzenie, bool poprawność)
+        {
+            
+            DateTime urodziny = (DateTime)picker1.SelectedDate;
+
+            int wiek = DateTime.Now.Year - urodziny.Year;
+
+            if (DateTime.Now.DayOfYear < urodziny.DayOfYear)
+            {
+                wiek--;
+            }
+
+            if (picker1.SelectedDate <= DateTime.Today & wiek >= 18) return true;
             else
             {
-                WalidacjaKodpocztowy(txtKod.Text);
-                WalidacjaEmail(txtEmail.Text);
-
+                MessageBox.Show("Klient nie jest pełnoletni!");
+                picker1.SelectedDate = null;
+                return false;
             }
-            //Regex regexmail = new Regex(/^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i);
-            //bool walidacja2 = regexmail.IsMatch(txtEmail.Text);
 
-            //if (walidacja2 == false)
-            //{
-            //    MessageBox.Show("Niepoprawny adres Email!");
-            //    txtEmail.Clear();
-            //}
+            
 
         }
 
-        //private void WalidacjaEmail()
-        //{
-        //    Regex regexmail = new Regex("^[\\d]{8}\\|[a-zA-Z]+\\|[a-zA-Z]+\\|([\\w]+[-_]?[\\w]*)+@[\\w]+.[\\w]+\\|$");
-        //    bool walidacja = regexmail.IsMatch(txtKod.Text);
-
-        //    if (walidacja == false)
-        //    {
-        //        MessageBox.Show("Niepoprawny adres Email!");
-        //        txtEmail.Clear();
-        //    }
-        //}
-
-
-        private void WalidacjaEmail(string emailaddress)
+        public bool WalidacjaTelefon(string telefon, bool poprawność)
         {
-            try
+            if (poprawność)
             {
-                MailAddress m = new MailAddress(emailaddress);
+                Regex regexkodpocztowy = new Regex("^\\d{9}$");
+                bool walidacja = regexkodpocztowy.IsMatch(telefon);
 
-                MessageBox.Show("POPRAWNY adres Email!");
+                if (walidacja) return true;
+                else
+                {
+                    MessageBox.Show("Wprowadzony numer telefonu jest niepoprawny!");
+                    txtTel.Clear();
+                    return false;
+
+                }
             }
-            catch (FormatException)
-            {
-                MessageBox.Show("Niepoprawny adres Email!");
-                txtEmail.Clear();
-            }
-
-
+            else return false;
+           
         }
 
-        private void WalidacjaKodpocztowy(string kodpocztowy)
+        public bool WalidacjaEmail(string emailaddress, bool poprawność)
         {
-            Regex regexkodpocztowy = new Regex("^\\d{2}-\\d{3}$");
-            bool walidacja = regexkodpocztowy.IsMatch(kodpocztowy);
-
-            if (walidacja == true)
+            if (poprawność)
             {
-                MessageBox.Show("Kod pocztowy poprawny");
+                try
+                {
+                    MailAddress m = new MailAddress(emailaddress);
+                    return true;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Niepoprawny adres Email!");
+                    txtEmail.Clear();
+                    return false;
+                }
             }
-            if (walidacja == false)
-            {
-                MessageBox.Show("Kod pocztowy niepoprawny !!!");
-                txtKod.Clear();
+            else return false;
+            
+            
+        }
 
+        public bool WalidacjaKodpocztowy(string kodpocztowy, bool poprawność)
+        {
+            if (poprawność)
+            {
+                Regex regexkodpocztowy = new Regex("^\\d{2}-\\d{3}$");
+                bool walidacja = regexkodpocztowy.IsMatch(kodpocztowy);
+
+                if (walidacja) return true;
+                else
+                {
+                    MessageBox.Show("Kod pocztowy niepoprawny !!!");
+                    txtKod.Clear();
+                    return false;
+                }
             }
+            else return false;
+            
         }
     }
 }
