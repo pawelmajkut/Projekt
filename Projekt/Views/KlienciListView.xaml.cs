@@ -105,7 +105,14 @@ namespace Projekt.Views
                 TelKom = x.TelKom,
             });
 
-           
+            if (txtImie.Text.Trim() != "")
+            {
+                list2 = list2.Where(x => EF.Functions.Like(x.Imię, $"{txtImie.Text}%"));
+            }
+            if (txtNazwisko.Text.Trim() != "")
+            {
+                list2 = list2.Where(x => EF.Functions.Like(x.Nazwisko, $"{txtNazwisko.Text}%"));
+            }
             if (txtMiasto.Text.Trim() != "")
             {
                 list2 = list2.Where(x => x.AdresZam.Contains($"{AdresZam}"));
@@ -118,7 +125,7 @@ namespace Projekt.Views
             {
                list2 = list2.Where(x => EF.Functions.Like(x.Imię, $"%a"));
             }
-            if (Convert.ToInt32(txtWyborRoku.Text) != 0)
+            if (Convert.ToInt32(txtWyborRoku.Text) != 1925)
             {
                 list2 = list2.Where(x => x.DataUrodzenia.Year == Convert.ToInt32(txtWyborRoku.Text));
             }
