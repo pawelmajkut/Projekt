@@ -67,7 +67,8 @@ namespace Projekt
 
         }
 
-        private void btnZakończ_Click(object sender, RoutedEventArgs e)
+        
+        private void btnZakoncz_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

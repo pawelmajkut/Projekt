@@ -21,8 +21,8 @@
                 
             </Grid.ColumnDefinitions>
             <Button Margin="40,5,40,5" Name="btnDodaj" Content="Dodaj" FontSize="18" FontWeight="Bold" Click="btnDodaj_Click"  />
-            <Button Margin="40,5,40,5" Name="btnZmień" Content="Zmień" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnZmień_Click"/>
-            <Button Margin="40,5,40,5" Name="btnUsuń" Content="Usuń" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnUsuń_Click"/>
+            <Button Margin="40,5,40,5" Name="btnZmien" Content="Zmień" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnZmien_Click"/>
+            <Button Margin="40,5,40,5" Name="btnUsun" Content="Usuń" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnUsun_Click"/>
         </Grid>
         <DataGrid x:Name="gridRezerwacje" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="10,2,10,10" SelectionMode="Single">
             <DataGrid.Columns>

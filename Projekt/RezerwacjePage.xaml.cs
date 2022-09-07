@@ -44,7 +44,7 @@ namespace Projekt
 
         private void btnZapisz_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbImięNazwisko.SelectedIndex == -1 || cmbProdukt.SelectedIndex == -1 || cmbStatus.SelectedIndex == -1)
+            if (cmbImieNazwisko.SelectedIndex == -1 || cmbProdukt.SelectedIndex == -1 || cmbStatus.SelectedIndex == -1)
             {
                 MessageBox.Show("Wprowadzono niepoprawne dane!");
             }
@@ -57,7 +57,7 @@ namespace Projekt
                 if (model != null && model.IdRezerwacje != 0)
                 {
                     RezerwacjeProduktów rezerwacje = db.RezerwacjeProduktóws.Find(model.IdRezerwacje);
-                    rezerwacje.KlientId = Convert.ToInt32(cmbImięNazwisko.SelectedValue);
+                    rezerwacje.KlientId = Convert.ToInt32(cmbImieNazwisko.SelectedValue);
                     rezerwacje.ProduktId = Convert.ToInt32(cmbProdukt.SelectedValue);
                     rezerwacje.StatusId = Convert.ToInt32(cmbStatus.SelectedValue);
                     rezerwacje.DataKoncaRezerwacji = (DateTime)picker1.SelectedDate;
@@ -69,7 +69,7 @@ namespace Projekt
                 else
                 {
                     RezerwacjeProduktów rezerwacje = new RezerwacjeProduktów();
-                    rezerwacje.KlientId = Convert.ToInt32(cmbImięNazwisko.SelectedValue);
+                    rezerwacje.KlientId = Convert.ToInt32(cmbImieNazwisko.SelectedValue);
                     rezerwacje.ProduktId = Convert.ToInt32(cmbProdukt.SelectedValue);
                     rezerwacje.StatusId = Convert.ToInt32(cmbStatus.SelectedValue);
                     rezerwacje.DataKoncaRezerwacji = (DateTime)picker1.SelectedDate;
@@ -79,7 +79,7 @@ namespace Projekt
                     db.SaveChanges();
                     MessageBox.Show("Rezerwacja dodana!");
 
-                    cmbImięNazwisko.SelectedIndex = -1;
+                    cmbImieNazwisko.SelectedIndex = -1;
                     cmbProdukt.SelectedIndex = -1;
                     cmbStatus.SelectedIndex = -1;
                     picker1.SelectedDate = null;
@@ -107,10 +107,10 @@ namespace Projekt
                 Nazwisko=a.Nazwisko,
             }).OrderBy(a=> a.Nazwisko).ToList();
 
-            cmbImięNazwisko.ItemsSource = list;
-            cmbImięNazwisko.DisplayMemberPath = "ImięNazwisko";
-            cmbImięNazwisko.SelectedValuePath = "ID_klienci";
-            cmbImięNazwisko.SelectedIndex = -1;
+            cmbImieNazwisko.ItemsSource = list;
+            cmbImieNazwisko.DisplayMemberPath = "ImięNazwisko";
+            cmbImieNazwisko.SelectedValuePath = "ID_klienci";
+            cmbImieNazwisko.SelectedIndex = -1;
 
             var produkty = db.Produkties.Select(a => new
             {
@@ -135,7 +135,7 @@ namespace Projekt
 
             if (model != null && model.IdRezerwacje != 0)
             {
-                cmbImięNazwisko.SelectedValue = model.KlientId;
+                cmbImieNazwisko.SelectedValue = model.KlientId;
                 cmbProdukt.SelectedValue = model.ProduktId;
                 cmbStatus.SelectedValue = model.StatusId;
                 picker1.SelectedDate = model.DataKoncaRezerwacji;

@@ -48,7 +48,7 @@
             <Label Content="Miasto"  Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <TextBox x:Name="txtMiasto" Grid.Column="1" TextWrapping="Wrap" Margin="0,0,0,0" Height="30"/>
             <Label Content="Płeć"  Grid.Row="1" Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <ComboBox Name="cmbPłeć" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30" Margin="0,0,0,0">
+            <ComboBox Name="cmbPlec" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30" Margin="0,0,0,0">
                 <ComboBoxItem Content="Mężczyzna" Tag="1"></ComboBoxItem>
                 <ComboBoxItem Content="Kobieta" Tag="2"></ComboBoxItem>
             </ComboBox>
@@ -56,13 +56,13 @@
             <DatePicker Name="datepicker1" Grid.Row="2" Grid.Column="1" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" SelectedDateFormat="Short"/>-->
             <Label Content="Rok urodzenia" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Height="34"/>
             <Slider Name="WybórRoku"  Width="150" Height="25" Grid.Column="3" Maximum="2050" Margin="0,10,0,10"  Orientation="Horizontal" SmallChange="1" TickPlacement="None" IsSnapToTickEnabled="True"/>
-            <TextBox x:Name="txtWybórRoku" Text="{Binding ElementName=WybórRoku, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="3" Width="80" Height="30"/>
+            <TextBox x:Name="txtWyborRoku" Text="{Binding ElementName=WybórRoku, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="3" Width="80" Height="30"/>
             <Label Content="Wybrany rok:" Grid.Column="2" Grid.Row="1" Height="34" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Button Grid.Column="4" Content="Szukaj" Name="btnSzukaj" Height="35" Click="btnSzukaj_Click" Width="160"/>
-            <Button Grid.Column="4" Grid.Row="1" Content="Wyczyść" Name="btnWyczyść" Height="35" Click="btnWyczyść_Click" Width="160"/>
+            <Button Grid.Column="4" Grid.Row="1" Content="Wyczyść" Name="btnWyczysc" Height="35" Click="btnWyczysc_Click" Width="160"/>
         </Grid>
         <Button x:Name="btnDodaj" Content="Dodaj" FontSize="18" FontWeight="Bold" Grid.Column="1" Grid.Row="2" Margin="40,5,40,5" Click="btnDodaj_Click"/>
-        <Button x:Name="btnZmień" Content="Zmień" FontSize="18" FontWeight="Bold" Grid.Column="2" Grid.Row="2" Margin="40,5,40,5" Click="btnZmień_Click"/>
-        <Button x:Name="btnUsuń" Content="Usuń" FontSize="18" FontWeight="Bold" Grid.Column="3" Grid.Row="2" Margin="40,5,40,5" Click="btnUsuń_Click"/>
+        <Button x:Name="btnZmien" Content="Zmień" FontSize="18" FontWeight="Bold" Grid.Column="2" Grid.Row="2" Margin="40,5,40,5" Click="btnZmien_Click"/>
+        <Button x:Name="btnUsun" Content="Usuń" FontSize="18" FontWeight="Bold" Grid.Column="3" Grid.Row="2" Margin="40,5,40,5" Click="btnUsun_Click"/>
     </Grid>
 </UserControl>

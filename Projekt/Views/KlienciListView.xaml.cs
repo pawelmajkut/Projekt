@@ -65,12 +65,12 @@ namespace Projekt.Views
             FillDatagrid();
         }
 
-        private void btnZmień_Click(object sender, RoutedEventArgs e)
+        private void btnZmien_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnUsuń_Click(object sender, RoutedEventArgs e)
+        private void btnUsun_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -98,30 +98,29 @@ namespace Projekt.Views
             {
                 list2 = list2.Where(x => x.AdresZam.Contains($"{AdresZam}"));
             }
-            if (cmbPłeć.SelectedIndex != 1 && cmbPłeć.SelectedIndex !=-1)
+            if (cmbPlec.SelectedIndex != 1 && cmbPlec.SelectedIndex !=-1)
             {
                list2 = list2.Where(x => EF.Functions.Like(x.Imię, $"%[^a]"));
             }
-            if (cmbPłeć.SelectedIndex != 0 && cmbPłeć.SelectedIndex != -1)
+            if (cmbPlec.SelectedIndex != 0 && cmbPlec.SelectedIndex != -1)
             {
                list2 = list2.Where(x => EF.Functions.Like(x.Imię, $"%a"));
             }
-            if (Convert.ToInt32(txtWybórRoku.Text) != 0)
+            if (Convert.ToInt32(txtWyborRoku.Text) != 0)
             {
-                list2 = list2.Where(x => x.DataUrodzenia.Year == Convert.ToInt32(txtWybórRoku.Text));
+                list2 = list2.Where(x => x.DataUrodzenia.Year == Convert.ToInt32(txtWyborRoku.Text));
             }
 
             gridKlienci.ItemsSource = list2.ToList();  
         }
 
-        private void btnWyczyść_Click(object sender, RoutedEventArgs e)
+        
+        private void btnWyczysc_Click(object sender, RoutedEventArgs e)
         {
             txtMiasto.Clear();
-            cmbPłeć.SelectedIndex = -1;
-            txtWybórRoku.Text = Convert.ToString('0');
+            cmbPlec.SelectedIndex = -1;
+            txtWyborRoku.Text = Convert.ToString('0');
             FillDatagrid();
-
         }
-
     }
 }

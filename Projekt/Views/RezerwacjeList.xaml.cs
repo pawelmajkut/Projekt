@@ -64,22 +64,22 @@ namespace Projekt.Views
             FillDatagrid();
         }
 
-        private void btnZmień_Click(object sender, RoutedEventArgs e)
-        {
-            RezerwacjeDetailModel model = (RezerwacjeDetailModel)gridRezerwacje.SelectedItem;
-            RezerwacjePage page = new RezerwacjePage();
-            page.model = model;
-            page.ShowDialog();
-            FillDatagrid();
-        }
-
-        private void btnUsuń_Click(object sender, RoutedEventArgs e)
+        private void btnUsun_Click(object sender, RoutedEventArgs e)
         {
             RezerwacjeDetailModel model = (RezerwacjeDetailModel)gridRezerwacje.SelectedItem;
             RezerwacjeProduktów rez = db.RezerwacjeProduktóws.Find(model.IdRezerwacje);
             db.RezerwacjeProduktóws.Remove(rez);
             db.SaveChanges();
             MessageBox.Show("Rezerwacja została usunięta!");
+            FillDatagrid();
+        }
+
+        private void btnZmien_Click(object sender, RoutedEventArgs e)
+        {
+            RezerwacjeDetailModel model = (RezerwacjeDetailModel)gridRezerwacje.SelectedItem;
+            RezerwacjePage page = new RezerwacjePage();
+            page.model = model;
+            page.ShowDialog();
             FillDatagrid();
         }
     }

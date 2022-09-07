@@ -21,7 +21,7 @@ namespace Projekt.Views
     /// </summary>
     public partial class KlienciPage : Window
     {
-        public bool poprawność { get; set; }
+        public bool poprawnosc { get; set; }
         
         public KlienciPage()
         {
@@ -40,10 +40,10 @@ namespace Projekt.Views
             this.Close();
         }
 
-        public bool SprawdźFormularz()
+        public bool SprawdzFormularz()
         {
             
-            if (txtImię.Text.Trim() == "" || txtNazwisko.Text.Trim() == ""
+            if (txtImie.Text.Trim() == "" || txtNazwisko.Text.Trim() == ""
                 || txtAdres.Text.Trim() == "" || txtKod.Text.Trim() == ""
                 || txtEmail.Text.Trim() == "" || txtTel.Text.Trim() == ""
                 || picker1.SelectedDate == null)
@@ -55,28 +55,23 @@ namespace Projekt.Views
             
         }
 
-        public void btnSprawdź_Click(object sender, RoutedEventArgs e)
+        public void btnSprawdz_Click(object sender, RoutedEventArgs e)
         {
-            poprawność = SprawdźFormularz();
+            poprawnosc = SprawdzFormularz();
 
-            if (poprawność)
+            if (poprawnosc)
             {
-                
-                poprawność = WalidacjaDataurodzenia((DateTime)picker1.SelectedDate, poprawność);
-                poprawność = WalidacjaKodpocztowy(txtKod.Text, poprawność);
-                poprawność = WalidacjaEmail(txtEmail.Text, poprawność);
-                poprawność = WalidacjaTelefon(txtTel.Text, poprawność);
-                               
-                
-                if (poprawność) MessageBox.Show("Formularz wypełniony poprawnie!");
+                poprawnosc = WalidacjaDataurodzenia((DateTime)picker1.SelectedDate, poprawnosc);
+                poprawnosc = WalidacjaKodpocztowy(txtKod.Text, poprawnosc);
+                poprawnosc = WalidacjaEmail(txtEmail.Text, poprawnosc);
+                poprawnosc = WalidacjaTelefon(txtTel.Text, poprawnosc);
+                                          
+                if (poprawnosc) MessageBox.Show("Formularz wypełniony poprawnie!");
                 else MessageBox.Show("Popraw dane w formularzu!");
-
             }
-            
-
         }
                 
-        public bool WalidacjaDataurodzenia(DateTime urodzenie, bool poprawność)
+        public bool WalidacjaDataurodzenia(DateTime urodzenie, bool poprawnosc)
         {
             
             DateTime urodziny = (DateTime)picker1.SelectedDate;
@@ -95,14 +90,11 @@ namespace Projekt.Views
                 picker1.SelectedDate = null;
                 return false;
             }
-
-            
-
         }
 
-        public bool WalidacjaTelefon(string telefon, bool poprawność)
+        public bool WalidacjaTelefon(string telefon, bool poprawnosc)
         {
-            if (poprawność)
+            if (poprawnosc)
             {
                 Regex regexkodpocztowy = new Regex("^\\d{9}$");
                 bool walidacja = regexkodpocztowy.IsMatch(telefon);
@@ -113,16 +105,14 @@ namespace Projekt.Views
                     MessageBox.Show("Wprowadzony numer telefonu jest niepoprawny!");
                     txtTel.Clear();
                     return false;
-
                 }
             }
-            else return false;
-           
+            else return false;         
         }
 
-        public bool WalidacjaEmail(string emailaddress, bool poprawność)
+        public bool WalidacjaEmail(string emailaddress, bool poprawnosc)
         {
-            if (poprawność)
+            if (poprawnosc)
             {
                 try
                 {
@@ -136,14 +126,12 @@ namespace Projekt.Views
                     return false;
                 }
             }
-            else return false;
-            
-            
+            else return false;         
         }
 
-        public bool WalidacjaKodpocztowy(string kodpocztowy, bool poprawność)
+        public bool WalidacjaKodpocztowy(string kodpocztowy, bool poprawnosc)
         {
-            if (poprawność)
+            if (poprawnosc)
             {
                 Regex regexkodpocztowy = new Regex("^\\d{2}-\\d{3}$");
                 bool walidacja = regexkodpocztowy.IsMatch(kodpocztowy);
@@ -156,8 +144,7 @@ namespace Projekt.Views
                     return false;
                 }
             }
-            else return false;
-            
+            else return false;          
         }
     }
 }
