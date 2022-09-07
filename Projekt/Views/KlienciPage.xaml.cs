@@ -35,7 +35,7 @@ namespace Projekt.Views
 
         private void btnAnuluj_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
 
@@ -54,9 +54,20 @@ namespace Projekt.Views
             //    txtKod.Clear();
 
             //}
-            WalidacjaKodpocztowy(txtKod.Text);
-            WalidacjaEmail(txtEmail.Text);
+            if (txtImię.Text.Trim() == "" || txtNazwisko.Text.Trim() == ""
+                || txtAdres.Text.Trim() == "" || txtKod.Text.Trim() == ""
+                || txtEmail.Text.Trim() == "" || txtTel.Text.Trim() == ""
+                ||  picker1.SelectedDate == null)
+            {
+                MessageBox.Show("Wypełnij wszystkie pola!!!");
 
+            }
+            else
+            {
+                WalidacjaKodpocztowy(txtKod.Text);
+                WalidacjaEmail(txtEmail.Text);
+
+            }
             //Regex regexmail = new Regex(/^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i);
             //bool walidacja2 = regexmail.IsMatch(txtEmail.Text);
 
