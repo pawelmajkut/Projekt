@@ -34,7 +34,7 @@
                 <DataGridTextColumn Header="ProduktID" Width="auto" Binding="{Binding ProduktId}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="StatusID" Width="auto" Binding="{Binding StatusId}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Status" Width="auto" Binding="{Binding Status}"/>
-                <DataGridTextColumn Header="Data__końca__rezerwacji" Width="auto" Binding="{Binding DataKoncaRezerwacji}"/>
+                <DataGridTextColumn Header="Data__końca__rezerwacji" Width="auto" Binding="{Binding DataKoncaRezerwacji, StringFormat=d}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

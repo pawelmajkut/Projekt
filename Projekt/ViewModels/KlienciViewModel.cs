@@ -8,5 +8,6 @@ namespace Projekt.ViewModels
 {
     public class KlienciViewModel
     {
+       
     }
 }

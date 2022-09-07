@@ -24,7 +24,7 @@
             <DataGridTextColumn Header="ID_klienci" Width="*" Binding="{Binding IdKlienci}" Visibility="Hidden"/>
             <DataGridTextColumn Header="Imię" Width="*" Binding="{Binding Imię}"/>
             <DataGridTextColumn Header="Nazwisko" Width="*" Binding="{Binding Nazwisko}"/>
-            <DataGridTextColumn Header="Data__urodzenia" Width="*" Binding="{Binding DataUrodzenia}"/>
+                <DataGridTextColumn Header="Data__urodzenia" Width="*" Binding="{Binding DataUrodzenia, StringFormat=d}"/>
             <DataGridTextColumn Header="Adres" Width="*" Binding="{Binding AdresZam}"/>
             <DataGridTextColumn Header="K.Poczta" Width="*" Binding="{Binding KodPocztowy}"/>
             <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}"/>
@@ -48,7 +48,7 @@
             <Label Content="Miasto"  Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <TextBox x:Name="txtMiasto" Grid.Column="1" TextWrapping="Wrap" Margin="0,0,0,0" Height="30"/>
             <Label Content="Płeć"  Grid.Row="1" Height="34" Width="78" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <ComboBox Name="cmbPłeć" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30" Margin="0,0,0,0" SelectionChanged="cmbPłeć_SelectionChanged">
+            <ComboBox Name="cmbPłeć" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30" Margin="0,0,0,0">
                 <ComboBoxItem Content="Mężczyzna" Tag="1"></ComboBoxItem>
                 <ComboBoxItem Content="Kobieta" Tag="2"></ComboBoxItem>
             </ComboBox>
