@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Net.Mail;
+using Projekt.ViewModels;
+using Projekt.DB;
 
 namespace Projekt.Views
 {
@@ -22,6 +24,10 @@ namespace Projekt.Views
     public partial class KlienciPage : Window
     {
         public bool poprawnosc { get; set; }
+
+        SklepInternetowy_BAJTContext db = new SklepInternetowy_BAJTContext();
+        public KlienciDetailModel model;
+
         
         public KlienciPage()
         {
@@ -30,7 +36,39 @@ namespace Projekt.Views
 
         private void btnZapisz_Click(object sender, RoutedEventArgs e)
         {
+            poprawnosc = SprawdzFormularz();
 
+            if (model != null && model.IdKlienci != 0)
+            {
+
+
+
+
+            }
+            else
+            {
+                Klienci klient = new Klienci();
+                klient.Imię = txtImie.Text;
+                klient.Nazwisko = txtNazwisko.Text;
+                klient.DataUrodzenia = (DateTime)picker1.SelectedDate;
+                klient.AdresZam = txtAdres.Text;
+                klient.KodPocztowy = txtKod.Text;
+                klient.Email = txtEmail.Text;
+                klient.TelKom = txtTel.Text;
+                db.Kliencis.Add(klient);
+                db.SaveChanges();
+                MessageBox.Show("Klient został dodany prawidłowo!");
+
+                txtImie.Clear();
+                txtNazwisko.Clear();
+                picker1.SelectedDate = null;
+                txtAdres.Clear();
+                txtKod.Clear();
+                txtEmail.Clear();
+                txtTel.Clear();
+
+
+            }
         }
 
 
@@ -145,6 +183,30 @@ namespace Projekt.Views
                 }
             }
             else return false;          
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            if (model != null && model.IdKlienci != 0)
+            {
+                txtImie.Text = model.Imię;
+                txtNazwisko.Text = model.Nazwisko;
+                picker1.SelectedDate = model.DataUrodzenia;
+                txtAdres.Text = model.AdresZam;
+                txtKod.Text = model.KodPocztowy;
+                txtEmail.Text = model.Email;
+                txtTel.Text = model.TelKom;
+
+                //cmbImieNazwisko.SelectedValue = model.KlientId;
+                //cmbProdukt.SelectedValue = model.ProduktId;
+                //cmbStatus.SelectedValue = model.StatusId;
+                //picker1.SelectedDate = model.DataKoncaRezerwacji;
+            }
+
+
+
+
         }
     }
 }
