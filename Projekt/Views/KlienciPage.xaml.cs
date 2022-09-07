@@ -40,10 +40,19 @@ namespace Projekt.Views
 
             if (model != null && model.IdKlienci != 0)
             {
+                Klienci klient = db.Kliencis.Find(model.IdKlienci);
+                klient.Imię = txtImie.Text;
+                klient.Nazwisko = txtNazwisko.Text;
+                klient.DataUrodzenia = (DateTime)picker1.SelectedDate;
+                klient.AdresZam = txtAdres.Text;
+                klient.KodPocztowy = txtKod.Text;
+                klient.Email = txtEmail.Text;
+                klient.TelKom = txtTel.Text;
 
+                db.SaveChanges();
+                MessageBox.Show("Dane klienta zostały zmienione!!");
 
-
-
+                      
             }
             else
             {
@@ -198,10 +207,6 @@ namespace Projekt.Views
                 txtEmail.Text = model.Email;
                 txtTel.Text = model.TelKom;
 
-                //cmbImieNazwisko.SelectedValue = model.KlientId;
-                //cmbProdukt.SelectedValue = model.ProduktId;
-                //cmbStatus.SelectedValue = model.StatusId;
-                //picker1.SelectedDate = model.DataKoncaRezerwacji;
             }
 
 

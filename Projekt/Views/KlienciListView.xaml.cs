@@ -67,12 +67,24 @@ namespace Projekt.Views
 
         private void btnZmien_Click(object sender, RoutedEventArgs e)
         {
+            KlienciDetailModel model = (KlienciDetailModel)gridKlienci.SelectedItem;
+            KlienciPage page = new KlienciPage();
+            page.model = model;
+            page.ShowDialog();
+            FillDatagrid();
 
         }
 
         private void btnUsun_Click(object sender, RoutedEventArgs e)
         {
-
+            KlienciDetailModel model = (KlienciDetailModel)gridKlienci.SelectedItem;
+            Klienci usuwanie = db.Kliencis.Find(model.IdKlienci);
+            db.Kliencis.Remove(usuwanie);
+           // db.Kliencis.Remove(usuwanie);
+            db.SaveChanges();
+            MessageBox.Show("Dane klienta zostały usunięte!");
+            FillDatagrid();
+            
         }
 
         
