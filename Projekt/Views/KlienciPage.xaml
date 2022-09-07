@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt.Views"
         mc:Ignorable="d"
-        Title="KlienciPage" Height="540" Width="800" Background="#FF104BA0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="18" FontWeight="Bold" Loaded="Window_Loaded">
+        Title="KlienciPage" Height="540" Width="800" Background="#FF104BA0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="18" FontWeight="Bold">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60*"/>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -30,14 +29,16 @@
         <Label Content="Data urodzenia"  Grid.Row="2"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <DatePicker Name="picker1" Grid.Row="2" Grid.Column="1" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0"/>
         <Label Content="Adres zamieszkania"  Grid.Row="3"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <RichTextBox Name="txtAdress" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Width="auto"/>
+        <RichTextBox Name="txtAdress" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Width="auto" Margin="0,5,20,5"/>
         <Label Content="Kod pocztowy"  Grid.Row="4"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Name="txtKod_pocztowy" TextWrapping="Wrap" VerticalAlignment="Center" Height="26" Margin="0,0,20,0"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="txtKod" TextWrapping="Wrap" VerticalAlignment="Center" Height="26" Margin="0,0,20,0"/>
+        
         <Label Content="E-mail"  Grid.Row="5"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="5" Name="txtEmail" TextWrapping="Wrap" VerticalAlignment="Center" Height="26" Margin="0,0,20,0"/>
         <Label Content="Telefon kontaktowy"  Grid.Row="6"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="6" Name="txtTel_kom" TextWrapping="Wrap" VerticalAlignment="Center" Height="26" Margin="0,0,20,0"/>
-        <Button Name="btnSave" Content="Save" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left" Margin="0,10,0,15" Width="140" Click="btnSave_Click"/>
-        <Button Name="btnClose" Content="Close" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Left" Margin="0,10,0,15" Width="140" Click="btnClose_Click"/>
+        <Button x:Name="btnSprawdź" Content="Sprawdź" Grid.Row="7"  Margin="0,10,0,15" HorizontalAlignment="Center" Width="140"  Click="btnSprawdź_Click"/>
+        <Button Name="btnZapisz" Content="Zapisz" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Center" Margin="0,10,0,15" Width="140" Click="btnZapisz_Click"/>
+        <Button Name="btnAnuluj" Content="Anuluj" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" Margin="0,10,0,15" Width="140" Click="btnAnuluj_Click"/>
     </Grid>
 </Window>

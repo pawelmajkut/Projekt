@@ -60,7 +60,9 @@ namespace Projekt.Views
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
-
+            KlienciPage page = new KlienciPage();
+            page.ShowDialog();
+            FillDatagrid();
         }
 
         private void btnZmień_Click(object sender, RoutedEventArgs e)
