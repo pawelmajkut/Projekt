@@ -10,6 +10,7 @@ namespace Projekt.DB
         public OpiekunProduktu()
         {
             Produkties = new HashSet<Produkty>();
+           // Pracownicies = new HashSet<Pracownicy>();
         }
 
         public int IdOpiekun { get; set; }
@@ -19,5 +20,7 @@ namespace Projekt.DB
         public virtual Pracownicy Pracownicy { get; set; }
         public virtual Producent Producent { get; set; }
         public virtual ICollection<Produkty> Produkties { get; set; }
+
+      //  public virtual ICollection<Pracownicy> Pracownicies { get; set; }
     }
 }

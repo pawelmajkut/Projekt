@@ -57,13 +57,14 @@ namespace Projekt
 
         private void btnKoszyki_Click(object sender, RoutedEventArgs e)
         {
-            lblWindowName.Content = "Rezerwacje";
+            lblWindowName.Content = "Koszyki";
 
         }
 
         private void btnPracownicy_Click(object sender, RoutedEventArgs e)
         {
             lblWindowName.Content = "Pracownicy";
+            DataContext = new PracownicyViewModel();
 
         }
 

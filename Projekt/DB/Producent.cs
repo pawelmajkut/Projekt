@@ -18,5 +18,6 @@ namespace Projekt.DB
 
         public virtual ICollection<OpiekunProduktu> OpiekunProduktus { get; set; }
         public virtual ICollection<Produkty> Produkties { get; set; }
+        //public virtual ICollection<Pracownicy> Pracownicies { get; set; }
     }
 }
