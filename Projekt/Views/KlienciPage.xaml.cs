@@ -36,9 +36,10 @@ namespace Projekt.Views
 
         private void btnZapisz_Click(object sender, RoutedEventArgs e)
         {
-            poprawnosc = SprawdzFormularz();
+            poprawnosc = SprawdzPolaFormularza();
+            poprawnosc = SprawdzPoprawnoscDanych(poprawnosc);
 
-            if (model != null && model.IdKlienci != 0)
+            if (poprawnosc == true && model != null && model.IdKlienci != 0)
             {
                 Klienci klient = db.Kliencis.Find(model.IdKlienci);
                 klient.Imię = txtImie.Text;
@@ -52,9 +53,9 @@ namespace Projekt.Views
                 db.SaveChanges();
                 MessageBox.Show("Dane klienta zostały zmienione!!");
 
-                      
+
             }
-            else
+            else if (poprawnosc && model == null )
             {
                 Klienci klient = new Klienci();
                 klient.Imię = txtImie.Text;
@@ -87,7 +88,7 @@ namespace Projekt.Views
             this.Close();
         }
 
-        public bool SprawdzFormularz()
+        public bool SprawdzPolaFormularza()
         {
             
             if (txtImie.Text.Trim() == "" || txtNazwisko.Text.Trim() == ""
@@ -104,19 +105,49 @@ namespace Projekt.Views
 
         public void btnSprawdz_Click(object sender, RoutedEventArgs e)
         {
-            poprawnosc = SprawdzFormularz();
+            poprawnosc = SprawdzPolaFormularza();
 
+            poprawnosc = SprawdzPoprawnoscDanych(poprawnosc);
+            //if (poprawnosc)
+            //{
+            //    poprawnosc = WalidacjaDataurodzenia((DateTime)picker1.SelectedDate, poprawnosc);
+            //    poprawnosc = WalidacjaKodpocztowy(txtKod.Text, poprawnosc);
+            //    poprawnosc = WalidacjaEmail(txtEmail.Text, poprawnosc);
+            //    poprawnosc = WalidacjaTelefon(txtTel.Text, poprawnosc);
+
+            //    if (poprawnosc) MessageBox.Show("Formularz wypełniony poprawnie!");
+            //    else MessageBox.Show("Popraw dane w formularzu!");
+            //}
+        }
+
+        public bool SprawdzPoprawnoscDanych(bool poprawnosc)
+        {
             if (poprawnosc)
             {
                 poprawnosc = WalidacjaDataurodzenia((DateTime)picker1.SelectedDate, poprawnosc);
                 poprawnosc = WalidacjaKodpocztowy(txtKod.Text, poprawnosc);
                 poprawnosc = WalidacjaEmail(txtEmail.Text, poprawnosc);
                 poprawnosc = WalidacjaTelefon(txtTel.Text, poprawnosc);
-                                          
-                if (poprawnosc) MessageBox.Show("Formularz wypełniony poprawnie!");
-                else MessageBox.Show("Popraw dane w formularzu!");
+
+                if (poprawnosc)
+                {
+                    MessageBox.Show("Formularz wypełniony poprawnie!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Popraw dane w formularzu!");
+                    return false;
+                }
+
             }
+            else return false;
+
+
+
         }
+
+
                 
         public bool WalidacjaDataurodzenia(DateTime urodzenie, bool poprawnosc)
         {
@@ -208,9 +239,6 @@ namespace Projekt.Views
                 txtTel.Text = model.TelKom;
 
             }
-
-
-
 
         }
     }
