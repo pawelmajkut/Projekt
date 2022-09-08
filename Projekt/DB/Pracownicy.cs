@@ -21,7 +21,7 @@ namespace Projekt.DB
 
         //public string OpiekunProducenta { get; set; }
 
-        public virtual OpiekunProduktu OpiekunProduktu { get; set; }
+        //public virtual OpiekunProduktu OpiekunProduktu { get; set; }
         //public virtual Producent Producent { get; set; }
 
         public virtual ICollection<OpiekunProduktu> OpiekunProduktus { get; set; }

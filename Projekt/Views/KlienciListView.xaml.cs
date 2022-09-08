@@ -115,7 +115,8 @@ namespace Projekt.Views
             }
             if (txtMiasto.Text.Trim() != "")
             {
-                list2 = list2.Where(x => x.AdresZam.Contains($"{AdresZam}"));
+                //list2 = list2.Where(x => x.AdresZam.Contains($"%_{AdresZam}"));
+                list2 = list2.Where(x => EF.Functions.Like(x.AdresZam, $"%{AdresZam}%"));
             }
             if (cmbPlec.SelectedIndex != 1 && cmbPlec.SelectedIndex !=-1)
             {
