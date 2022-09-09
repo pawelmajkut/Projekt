@@ -63,5 +63,5 @@ Do uruchomienia aplikacji nasz serwer SQL musi być widoczny pod adresem "**.**"
 
 ## Problemy z połączeniem do bazy
 
-Sprawdzić wpis odnośnie bazy dancyh w pliku: SklepInternetowy_BAJTContext.cs -- 
+Sprawdzić wpis odnośnie bazy danych w pliku: SklepInternetowy_BAJTContext.cs -- optionsBuilder.UseSqlServer("Server=XXXXXXXX; ....)
 
