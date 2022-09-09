@@ -61,3 +61,7 @@
 
 Do uruchomienia aplikacji nasz serwer SQL musi być widoczny pod adresem "**.**". Następnie urachamiamy dołączony skrypt. Po dodaniu bazy danych przechodzimy do pliku projektowego. Po wkonaniu wszystkich poprzednich operacji uruchamiamy Projekt.sln i aplikajca jest gotowa do użycia.
 
+## Problemy z połączeniem do bazy
+
+Sprawdzić wpis odnośnie bazy dancyh w pliku: SklepInternetowy_BAJTContext.cs -- 
+
