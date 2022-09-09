@@ -19,6 +19,7 @@
 #### Zakładka z danymi pracowników:
 - Tabela z danymi pracowników
 - Wyszukiwanie pracowników według: imienia, nazwiska, płci, stanowiska, producenta
+- W trakcie pracy: Przycisk do dodawnia , usuwania , edycji danych pracownika 
 
 #### Zakładka z produktami:
 - W przygotowaniu…
