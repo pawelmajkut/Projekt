@@ -13,7 +13,7 @@ namespace Projekt.ViewModels
         public string Nazwisko { get; set; }
         public string Stanowisko { get; set; }
         public string Pesel { get; set; }
-        public int OpiekunProducenta { get; set; }
-       // public string Producent { get; set; }
+       // public int OpiekunProducenta { get; set; } // 00:38 09.09.2022
+        public string Producent { get; set; }  /// TUTAJ - ostatnio aktywowanie godzina 23:24
     }
 }

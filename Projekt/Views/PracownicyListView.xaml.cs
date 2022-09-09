@@ -173,7 +173,9 @@ namespace Projekt.Views
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
-
+            PracownicyPage page = new PracownicyPage();
+            page.ShowDialog();
+            FillDatagrid();
         }
 
         private void btnZmien_Click(object sender, RoutedEventArgs e)

@@ -21,6 +21,7 @@ namespace Projekt.Views
 {
     /// <summary>
     /// Logika interakcji dla klasy KlienciListView.xaml
+    /// 
     /// </summary>
     public partial class KlienciListView : UserControl
     {
@@ -67,7 +68,8 @@ namespace Projekt.Views
 
         private void btnZmien_Click(object sender, RoutedEventArgs e)
         {
-            KlienciDetailModel model = (KlienciDetailModel)gridKlienci.SelectedItem;
+            
+            KlienciDetailModel model = (KlienciDetailModel)gridKlienci.SelectedItem; 
             KlienciPage page = new KlienciPage();
             page.model = model;
             page.ShowDialog();
@@ -77,6 +79,7 @@ namespace Projekt.Views
 
         private void btnUsun_Click(object sender, RoutedEventArgs e)
         {
+            
             KlienciDetailModel model = (KlienciDetailModel)gridKlienci.SelectedItem;
             Klienci usuwanie = db.Kliencis.Find(model.IdKlienci);
             db.Kliencis.Remove(usuwanie);
@@ -91,6 +94,7 @@ namespace Projekt.Views
 
         private void btnSzukaj_Click(object sender, RoutedEventArgs e)
         {
+            
             string AdresZam = Convert.ToString(txtMiasto.Text);
 
             var list2 = db.Kliencis.Select(x => new KlienciDetailModel()
@@ -126,7 +130,7 @@ namespace Projekt.Views
             {
                list2 = list2.Where(x => EF.Functions.Like(x.Imię, $"%a"));
             }
-            if (Convert.ToInt32(txtWyborRoku.Text) != 1925)
+            if (Convert.ToInt32(txtWyborRoku.Text) != 0)
             {
                 list2 = list2.Where(x => x.DataUrodzenia.Year == Convert.ToInt32(txtWyborRoku.Text));
             }
@@ -137,6 +141,8 @@ namespace Projekt.Views
         
         private void btnWyczysc_Click(object sender, RoutedEventArgs e)
         {
+            txtImie.Clear();
+            txtNazwisko.Clear();
             txtMiasto.Clear();
             cmbPlec.SelectedIndex = -1;
             txtWyborRoku.Text = Convert.ToString('0');
